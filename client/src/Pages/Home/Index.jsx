@@ -3,6 +3,7 @@ import Header from '../../Components/Header';
 import Intro from '../Home/intro.jsx';
 import "../../font.css";
 import { runMatter } from '../../../matter.js'; // Import the Matter.js setup function
+import Experiences from './Experiences.jsx';
 
 function Index() {
   useEffect(() => {
@@ -40,7 +41,12 @@ function Index() {
         {/* Wrapper canvas for Matter.js */}
         <div className="absolute inset-0 hidden md:block" id="wrapper-canvas"></div>
         <Intro />
+       
       </div>
+        <div class="max-w-screen-xl mx-auto px-4 relative pb-8 sm:pb-16" >
+        <Experiences/>
+        </div>
+       
     </>
   );
 }
