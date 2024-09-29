@@ -6,3 +6,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities {
+    .fredoka-bold {
+      @apply font-bold;
+      font-family: "Fredoka", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 700; /* Adjust weight as needed */
+      font-variation-settings: "wdth" 100;
+    }
+  
+    .fredoka-regular {
+      font-family: "Fredoka", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400; /* Adjust weight as needed */
+      font-variation-settings: "wdth" 100;
+    }
+  }
+  
