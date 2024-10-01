@@ -7,6 +7,15 @@ import Experiences from './Experiences.jsx';
 
 function Index() {
   useEffect(() => {
+    // Scroll to top on component mount with a slight delay
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100); // Delay of 100ms to ensure component mounts first
+  }, []);
+  
+
+
+  useEffect(() => {
     const canvas = document.querySelector("#wrapper-canvas");
     const header = document.querySelector("header"); // Assuming you have a <header> tag in Header component
 
@@ -43,9 +52,11 @@ function Index() {
         <Intro />
        
       </div>
-        <div class="max-w-screen-xl mx-auto px-4 relative pb-8 sm:pb-16" >
-        <Experiences/>
-        </div>
+       
+      <div id="experiences-section" class="w-full h-screen  md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+  <Experiences />
+</div>
+
        
     </>
   );

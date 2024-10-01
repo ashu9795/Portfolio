@@ -62,9 +62,15 @@ const intro = () => {
     </ul>
   </div>
   <div class="self-center relative">
-    <button class="bg-[#4595eb]  py-2 font-extrabold px-5 rounded hover:scale-105 mb-20">
-        Latest Work
-      </button>
+  <button 
+  className="bg-[#4595eb] py-2 font-extrabold px-5 rounded hover:scale-105 mb-10 sm:mb-30"
+  onClick={() => {
+    document.getElementById('experiences-section').scrollIntoView({ behavior: 'smooth' });
+  }}
+>
+  Latest Work
+</button>
+
   
     </div>
    </>
