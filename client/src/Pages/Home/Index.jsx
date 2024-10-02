@@ -4,6 +4,7 @@ import Intro from '../Home/intro.jsx';
 import "../../font.css";
 import { runMatter } from '../../../matter.js'; // Import the Matter.js setup function
 import Experiences from './Experiences.jsx';
+import Project from './Project.jsx';
 
 function Index() {
   useEffect(() => {
@@ -53,9 +54,14 @@ function Index() {
        
       </div>
        
-      <div id="experiences-section" class="w-full h-screen  md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+      <div id="experiences-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <Experiences />
 </div>
+
+<div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+  <Project />
+</div>
+
 
        
     </>

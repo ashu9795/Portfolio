@@ -1,3 +1,15 @@
 #wrapper-canvas canvas {
   max-width: 100%;
 }
+
+/* Ensure the link doesn't affect image size */
+.image-link {
+  display: inline-block; /* Ensure it behaves like a block-level element without affecting the image */
+  text-decoration: none; /* Remove the underline */
+}
+
+.image-link img {
+  width: 100%; /* Ensure the image retains its full width */
+  height: auto; /* Ensure the aspect ratio is maintained */
+  display: block; /* Remove the gap under the image */
+}
