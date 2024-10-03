@@ -5,6 +5,7 @@ import "../../font.css";
 import { runMatter } from '../../../matter.js'; // Import the Matter.js setup function
 import Experiences from './Experiences.jsx';
 import Project from './Project.jsx';
+import Certification from './Certification.jsx';
 
 function Index() {
   useEffect(() => {
@@ -61,7 +62,9 @@ function Index() {
 <div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <Project />
 </div>
-
+<div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+  <Certification />
+</div>
 
        
     </>

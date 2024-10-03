@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../index.css"
 function SectionTitle(
     {
         title,
@@ -7,7 +7,7 @@ function SectionTitle(
 ) {
   return (
     <div className='flex'>
-        <h1 className='text-2xl text-blue-400 font-semibold'> 
+        <h1 className='text-2xl text-blue-400 ubuntu-bold'> 
             {
                 title
             }
