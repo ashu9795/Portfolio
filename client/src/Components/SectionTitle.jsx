@@ -6,7 +6,7 @@ function SectionTitle(
     }
 ) {
   return (
-    <div className='flex'>
+    <div className='flex '>
         <h1 className='text-2xl text-blue-400 ubuntu-bold'> 
             {
                 title

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import SectionTitle from '../../Components/SectionTitle';
-import {certifications} from "../../Resources/certifications"
-import "../../font.css"
+import { certifications } from "../../Resources/certifications";
+import "../../font.css";
 
-function Certification() {  // Changed from 'certification' to 'Certification'
+function Certification() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto">
       <SectionTitle title="Certifications" />
-      <div className="flex flex-col lg:flex-row py-10 lg:gap-20 gap-10">
+      <div className="flex flex-col lg:flex-row py-10 lg:gap-20 gap-10 w-full">
         {/* Sidebar (List of certifications) */}
-        <div className="flex sm:flex-col gap-5 border-l-2 border-gray-400 w-full  lg:w-1/3 sm:w-full overflow-x-auto ">
+        <div className="flex sm:flex-col gap-5 border-l-2 border-gray-400 w-full lg:w-1/3 sm:w-full overflow-x-auto">
           {certifications.map((certification, index) => (
             <div
               key={index}
@@ -31,8 +31,13 @@ function Certification() {  // Changed from 'certification' to 'Certification'
           ))}
         </div>
 
+        {/* Detail Section */}
         <div className='flex items-center justify-center gap-10 flex-col md:flex-col'>
-        <img src={certifications[selectedItemIndex].image} alt=""  className="h-40 w-48 sm:h-60 sm:w-72 "  />
+          <img
+            src={certifications[selectedItemIndex].image}
+            alt=""
+            className="h-40 w-48 sm:h-60 sm:w-72"
+          />
           <div className="flex flex-col gap-3 sm:gap-5">
             <h1 className="text-orange-200 text-xl sm:text-2xl ubuntu-bold-italic">
               {certifications[selectedItemIndex].period}
@@ -46,8 +51,8 @@ function Certification() {  // Changed from 'certification' to 'Certification'
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default Certification;  // Changed from 'certification' to 'Certification'
+export default Certification;

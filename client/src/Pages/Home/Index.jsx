@@ -6,6 +6,8 @@ import { runMatter } from '../../../matter.js'; // Import the Matter.js setup fu
 import Experiences from './Experiences.jsx';
 import Project from './Project.jsx';
 import Certification from './Certification.jsx';
+import ContactUs from './ContactUs.jsx';
+import Footer from './Footer.jsx';
 
 function Index() {
   useEffect(() => {
@@ -55,6 +57,8 @@ function Index() {
        
       </div>
        
+<div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto"></div>
+
       <div id="experiences-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <Experiences />
 </div>
@@ -65,6 +69,11 @@ function Index() {
 <div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <Certification />
 </div>
+<div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+  <ContactUs />
+</div>
+
+<Footer />
 
        
     </>

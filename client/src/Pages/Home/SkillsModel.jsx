@@ -133,7 +133,13 @@ const SkillsModal = ({ onClose }) => {
 
 
               </div>
+              <h2
+        class="text-3xl sm:text-[40px] bg-[#111] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] sm:border-2 border-[#1788ae] rounded-md"
+      >
+        Let's Connect
+      </h2>
             </div>
+            
         </div>
     );
 };
