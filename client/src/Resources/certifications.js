@@ -16,6 +16,30 @@
         description : "I completed a Web Development course from Udemy. I learned about front-end and back-end web development technologies such as HTML, CSS, JavaScript, Node.js, and MongoDB."
         },
         {
+            id : "2",
+            title : "Web Development",
+            Organization : "Udemy",
+            period : "June 2023 - September 2023",
+             image : "/abc.jpg",
+            description : "I completed a Web Development course from Udemy. I learned about front-end and back-end web development technologies such as HTML, CSS, JavaScript, Node.js, and MongoDB."
+            },
+            {
+                id : "2",
+                title : "Web Development",
+                Organization : "Udemy",
+                period : "June 2023 - September 2023",
+                 image : "/abc.jpg",
+                description : "I completed a Web Development course from Udemy. I learned about front-end and back-end web development technologies such as HTML, CSS, JavaScript, Node.js, and MongoDB."
+                },
+                {
+                    id : "2",
+                    title : "Web Development",
+                    Organization : "Udemy",
+                    period : "June 2023 - September 2023",
+                     image : "/abc.jpg",
+                    description : "I completed a Web Development course from Udemy. I learned about front-end and back-end web development technologies such as HTML, CSS, JavaScript, Node.js, and MongoDB."
+                    },
+        {
             id : "3",
             title : "Python Programming",
             Organization : "edX",

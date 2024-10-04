@@ -3,5 +3,9 @@ body {
     background-color: #111111;
     color: white;
     font-family: 'Nunito', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
   }
-  
+  .dark {
+    background-color: #1a1a1a; /* Dark background */
+    color: #ffffff; /* Light text */
+}

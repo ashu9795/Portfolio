@@ -52,7 +52,8 @@ function Index() {
       <div className='flex flex-col justify-between h-screen'>
         <Header />
         {/* Wrapper canvas for Matter.js */}
-        <div className="absolute inset-0 hidden md:block" id="wrapper-canvas"></div>
+     
+        <div className="absolute inset-0 hidden md:block  w-full  max-w-screen-xl mx-auto " id="wrapper-canvas"></div>
         <Intro />
        
       </div>
@@ -63,13 +64,13 @@ function Index() {
   <Experiences />
 </div>
 
-<div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+<div  className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <Project />
 </div>
-<div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+<div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <Certification />
 </div>
-<div id="projects-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+<div   className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <ContactUs />
 </div>
 

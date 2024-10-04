@@ -11,7 +11,7 @@ function Project() {
       <SectionTitle title="Projects" />
       <div className="flex flex-col lg:flex-row py-10 lg:gap-20 gap-10 w-full">
         {/* Sidebar (List of Projects) */}
-        <div className="flex sm:flex-col gap-5 border-l-2 border-gray-400 w-full lg:w-1/3 sm:w-full overflow-x-auto">
+        <div className="flex sm:flex-col gap-5 border-l-2 border-gray-400 w-full lg:w-1/3 sm:w-full overflow-y-auto max-h-[400px]">
           {projects.map((project, index) => (
             <div
               key={index}

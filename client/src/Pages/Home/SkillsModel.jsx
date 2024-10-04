@@ -1,5 +1,5 @@
 import React, { useEffect, useRef,useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const SkillsModal = ({ onClose }) => {
     const modalRef = useRef(null); // Reference to the modal content
    const [hoveredSvgName, setHoveredSvgName] = useState(''); // State to store the name of the hovered SVG
@@ -19,6 +19,11 @@ const SkillsModal = ({ onClose }) => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+      navigate('/contact'); // This will navigate to the ContactUs component
+    };
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
@@ -133,11 +138,15 @@ const SkillsModal = ({ onClose }) => {
 
 
               </div>
-              <h2
-        class="text-3xl sm:text-[40px] bg-[#111] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] sm:border-2 border-[#1788ae] rounded-md"
-      >
-        Let's Connect
-      </h2>
+              <div className='flex  justify-center mt-14'>
+              <button
+      className="bg-[#4595eb] py-2 font-extrabold px-5 rounded hover:scale-105 mb-10 sm:mb-30"
+      onClick={handleButtonClick}
+    >
+      Let's Connect
+    </button>
+              </div>
+             
             </div>
             
         </div>

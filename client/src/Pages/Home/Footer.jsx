@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div>
       
-      <footer  className="flex flex-col items-center justify-center z-10 w-full px-4 pointer-events-none mt-4 max-w-screen-xl mx-auto">
+      <footer  className="flex flex-col items-center justify-center z-10 w-full px-4  mt-4 max-w-screen-xl mx-auto">
       <p class="text-xs text-gray-300">Ashutosh Gupta © 2024</p>
       <div class="black-logo my-4">
         <svg
