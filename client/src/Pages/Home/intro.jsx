@@ -62,6 +62,7 @@ const intro = () => {
     </ul>
   </div>
   <div class="self-center relative">
+
   <button 
   className="bg-[#4595eb] py-2 font-extrabold px-5 rounded hover:scale-105 mb-10 sm:mb-30"
   onClick={() => {
@@ -70,7 +71,6 @@ const intro = () => {
 >
   Latest Work
 </button>
-
   
     </div>
    </>

@@ -11,7 +11,7 @@ function Certification() {
       <SectionTitle title="Certifications" />
       <div className="flex flex-col lg:flex-row py-10 lg:gap-20 gap-10 w-full">
         {/* Sidebar (List of certifications) */}
-        <div className="flex flex-col gap-5 border-l-2 border-gray-400 w-full lg:w-1/3 sm:w-full overflow-y-auto max-h-[400px]">
+        <div className="flex sm:flex-col gap-5 border-l-2 border-gray-400 w-full lg:w-1/3 sm:w-full overflow-y-auto max-h-[400px]">
           {certifications.map((certification, index) => (
             <div
               key={index}
