@@ -2,14 +2,14 @@ import React from 'react';
 import ThemeBtn from './ThemeButton';
 function Header() {
   const openCallLog = () => {
-    const phoneNumber = '+9197957274367'; // Replace with your actual phone number
+    const phoneNumber = '+919795727437'; // Replace with your actual phone number
     const callLogUrl = `tel:${phoneNumber}`;
     window.location.href = callLogUrl;
   };
 
 
   const openWhatsApp = () => {
-    const phoneNumber = 'YOUR_WHATSAPP_NUMBER'; // Replace with your WhatsApp number (in international format)
+    const phoneNumber = '9795727437'; // Replace with your WhatsApp number (in international format)
     const message = encodeURIComponent('Hey Ashutosh, I hope you are doing well');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_self');
