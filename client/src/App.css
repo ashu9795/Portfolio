@@ -1,11 +1,15 @@
 body {
-    margin: 0;
-    background-color: #111111;
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  .dark {
-    background-color: #1a1a1a; /* Dark background */
-    color: #ffffff; /* Light text */
+  margin: 0;
+  background-color: #111111; /* Light mode background */
+  color: white; /* Light mode text color */
+  font-family: 'Nunito', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
+
+body.dark-mode {
+  background-color: rgb(113, 112, 114); /* Dark mode background */
+  color: black; /* Dark mode text color */
+}
+
+/* If you want to ensure SVGs follow body colors */
+

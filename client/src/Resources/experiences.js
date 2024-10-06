@@ -6,21 +6,16 @@ export const experiences = [
         description: "I worked as a Data Analyst Intern at SWARG. I was responsible for analyzing data and providing insights to the team. I also worked on data visualization and dashboard creation using Power BI."
     },
     {   _id: "2",
-        title :"Software Developer Intern",
-        Organization: "XYZ",
-        period : "June 2023 - September 2023",
-        description: "I worked as a Software Developer Intern at XYZ. I was responsible for developing and maintaining software applications. I also worked on bug fixing and testing of the applications."
+        title :"Mentor in Academics",
+        Organization: "G.C.E.T",
+        period : "June 2023 - June 2024",
+        description: "I have been selected as a mentor for the junior batch in academics, where I will provide guidance and support to help them excel in their studies. My role involves offering personalized advice, sharing resources, and fostering a collaborative learning environment. I'm excited to help them achieve their academic goals and grow as learners."
     },
     {   _id: "3",
-        title :"Web Developer Intern",
-        Organization: "ABC",
-        period : "June 2022 - September 2022",
-        description: "I worked as a Web Developer Intern at ABC. I was responsible for developing and maintaining websites. I also worked on front-end and back-end development of the websites."
+        title :"Coading Club Member",
+        Organization: "Loop Club",
+        period : "November 2021 - June 2024",
+        description: "I have been selected as a member of the Coding Club in the LOOP Club, where I will collaborate with fellow enthusiasts to explore and build innovative coding projects. Together, we will work on enhancing our technical skills and knowledge through hands-on experience. Excited to contribute and learn with the team!"
     },
-    {   _id: "4",
-        title :"Data Entry Operator",
-        Organization: "PQR",
-        period : "June 2021 - September 2021",
-        description: "I worked as a Data Entry Operator at PQR. I was responsible for entering data into the system. I also worked on data verification and validation."
-    },
+    
 ];

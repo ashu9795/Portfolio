@@ -1,28 +1,62 @@
-import React from 'react'
+import React from 'react';
 import useTheme from '../context/theme';
+
 export default function ThemeBtn() {
-     const { themeMode, lightTheme, darkTheme } = useTheme();
-    const onChangebtn = (e) => {
-        const darkModeStatus = e.currentTarget.checked;
-        if(darkModeStatus){
-            darkTheme();}
-        else
-               { lightTheme();
-               }
+  const { themeMode, lightTheme, darkTheme } = useTheme();
+
+  const toggleTheme = () => {
+    if (themeMode === 'dark') {
+      lightTheme();
+    } else {
+      darkTheme();
     }
-    return (
-        <label className="relative inline-flex items-center cursor-pointer">
-            <input
-                type="checkbox"
-                value=""
-                className="sr-only peer"
-                onChange = {onChangebtn}
-                checked = {themeMode === "dark"}
+  };
 
-            />
-            <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-            <span className="ml-3 text-sm font-medium text-gray-900">Toggle Theme</span>
-        </label>
-    );
+  return (
+    <button
+      onClick={toggleTheme}
+      className="flex items-center justify-center w-10 h-10 rounded-full focus:outline-none"
+      aria-label="Toggle Theme"
+    >
+      {themeMode === 'dark' ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="pointer-events-auto feather feather-sun"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      ) : (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="pointer-events-auto feather feather-moon"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      )}
+    </button>
+  );
 }
-
