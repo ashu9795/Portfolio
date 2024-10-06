@@ -8,6 +8,7 @@ import Project from './Project.jsx';
 import Certification from './Certification.jsx';
 import ContactUs from './ContactUs.jsx';
 import Footer from './Footer.jsx';
+import useTheme from '../../context/theme'; // Import the useTheme hook
 
 function Index() {
   useEffect(() => {
@@ -18,7 +19,7 @@ function Index() {
   }, []);
   
 
-
+const { themeMode } = useTheme(); // Get the current theme mode
   useEffect(() => {
     const canvas = document.querySelector("#wrapper-canvas");
     const header = document.querySelector("header"); // Assuming you have a <header> tag in Header component

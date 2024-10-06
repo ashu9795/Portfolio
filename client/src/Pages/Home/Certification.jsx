@@ -7,6 +7,8 @@ import useTheme from '../../context/theme'; // Import the useTheme hook
 function Certification() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
   const { themeMode } = useTheme(); // Get the current theme mode
+   const textColor = themeMode === 'dark' ?  'text-black' : 'text-blue-300' ;
+   const descColor = themeMode === 'dark' ?  'text-black' : 'text-green-200' ;
 
   return (
     <div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto">
@@ -23,7 +25,7 @@ function Certification() {
               <h1
                 className={`text-lg sm:text-xl px-3 sm:px-5 ubuntu-light-italic ${
                   selectedItemIndex === index
-                    ? 'text-blue-300 border-gray-400 border-l-4 -ml-[3px] bg-[#667f8e44] py-2 sm:py-3'
+                    ? `${textColor} border-gray-400 border-l-4 -ml-[3px] bg-[#667f8e44] py-2 sm:py-3`
                     : themeMode === "dark" 
                     ? 'text-black' // Light text color for dark mode
                     : 'text-white' // Default text color for light mode
@@ -50,7 +52,7 @@ function Certification() {
             <h1 className="text-orange-200 text-xl sm:text-2xl ubuntu-regular">
               {certifications[selectedItemIndex].Organization}
             </h1>
-            <h1 className="text-green-200 text-lg sm:text-2xl ubuntu-medium">
+            <h1 className={`text-lg sm:text-2xl ubuntu-medium ${descColor}`}>
               {certifications[selectedItemIndex].description}
             </h1>
           </div>

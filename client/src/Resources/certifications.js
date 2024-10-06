@@ -1,4 +1,14 @@
  export const  certifications =[
+
+    {
+        id : "2",
+        title : "A.W.S S3",
+        Organization : "Coursera",
+        period : "June 2024 - August 2024",
+         image : "/aws.svg",
+        description : "Completed the AWS S3 Basics project, an online non-credit course authorized by the Coursera Project Network and offered through Coursera. This project provided essential knowledge in Amazon S3, enhancing my skills in cloud storage and management."
+        },
+
     {
  id : "1",
     title : "Data Science",
@@ -15,14 +25,7 @@
          image : "/cyber.svg",
         description : "Awarded the Certificate of Participation for successfully completing Cyber Security courses through IBM SkillsBuild, conducted in collaboration with the All India Council for Technical Education (AICTE) and Edunet Foundation. The program spanned from June 12, 2023, to July 24, 2023. This experience has enhanced my skills in cybersecurity principles and practices."
         },
-        {
-            id : "2",
-            title : "A.W.S S3",
-            Organization : "Coursera",
-            period : "June 2024 - August 2024",
-             image : "/aws.svg",
-            description : "Completed the AWS S3 Basics project, an online non-credit course authorized by the Coursera Project Network and offered through Coursera. This project provided essential knowledge in Amazon S3, enhancing my skills in cloud storage and management."
-            },
+       
             {
                 id : "2",
                 title : "Java Programming",

@@ -1,7 +1,10 @@
 import React from 'react';
 import AboutButton from './AboutButton';
+import useTheme from '../../context/theme';
 
 const intro = () => {
+;
+
   return (
    <>
    <div class="-mt-10 flex relative">
@@ -24,7 +27,7 @@ const intro = () => {
       </div>
     
     </div>
-    <ul class="ml-auto space-y-6 absolute right-8  text-[#b0b2c3]"  >
+    <ul class="ml-auto space-y-6 absolute right-8 "  >
         <li class="w-7 hover:text-white">
             <a href="https://www.linkedin.com/in/ashutosh-gupta-820a09215/" target="_self">
                 <svg  class="full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
