@@ -8,7 +8,9 @@ function Certification() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
   const { themeMode } = useTheme(); // Get the current theme mode
    const textColor = themeMode === 'dark' ?  'text-black' : 'text-blue-300' ;
-   const descColor = themeMode === 'dark' ?  'text-black' : 'text-green-200' ;
+;
+   const orgColor = themeMode === 'dark' ?  'text-black' : 'text-green-200' ;
+   const perColor = themeMode === 'dark' ?  'text-black' : ' text-orange-200' ;
 
   return (
     <div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto">
@@ -43,16 +45,16 @@ function Certification() {
           <img
             src={certifications[selectedItemIndex].image}
             alt=""
-            className="h-40 w-48 sm:h-60 sm:w-72"
+            className="h-40 w-48 sm:h-52 sm:w-60"
           />
           <div className="flex flex-col gap-3 sm:gap-5  text-center sm:text-left">
-            <h1 className="text-orange-200 text-xl sm:text-2xl ubuntu-bold-italic">
+            <h1 className={`${perColor} text-xl sm:text-2xl ubuntu-light-italic`}>
               {certifications[selectedItemIndex].period}
             </h1>
-            <h1 className="text-orange-200 text-xl sm:text-2xl ubuntu-regular">
+            <h1 className={`${orgColor} text-lg sm:text-2xl ubuntu-light`}>
               {certifications[selectedItemIndex].Organization}
             </h1>
-            <h1 className={`text-lg sm:text-2xl ubuntu-medium ${descColor}`}>
+            <h1 className=" text-gray-400 text-lg sm:text-xl fredoka-regular ">
               {certifications[selectedItemIndex].description}
             </h1>
           </div>

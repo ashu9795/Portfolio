@@ -15,7 +15,7 @@
     Organization : "DataCamp",
     period : "Jan 2024 - June 2024",
      image : "/data_science.svg",
-    description :"ompleted the Associate Data Science certification from DataCamp, gaining expertise in data analysis, machine learning, and statistical modeling. Proficient in Python and R, I have developed skills in data manipulation and predictive modeling. Eager to apply my knowledge to real-world data challenges."
+    description :"Completed the Associate Data Science certification from DataCamp, gaining expertise in data analysis, machine learning, and statistical modeling. Proficient in Python and R, I have developed skills in data manipulation and predictive modeling. Eager to apply my knowledge to real-world data challenges."
     },
     {
         id : "2",

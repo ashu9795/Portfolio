@@ -40,7 +40,7 @@ function Footer() {
           </defs>
         </svg>
       </div>
-      <ul className="mx-auto flex items-center justify-center gap-6 text-[#b0b2c3] size-5/12"  >
+      <ul className="mx-auto flex items-center justify-center gap-6 text-[#b0b2c3] size-5/12  mb-7"  >
         <li class="w-5 hover:text-white">
             <a href="https://www.linkedin.com/in/ashutosh-gupta-820a09215/" target="_self">
                 <svg  class="full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

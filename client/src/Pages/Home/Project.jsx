@@ -8,8 +8,8 @@ function Project() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
   const { themeMode } = useTheme();
  const textColor = themeMode === 'dark' ?  'text-black' : 'text-blue-300' ;
+ const orgColor = themeMode === 'dark' ?  'text-black' : 'text-orange-200' ;
 
- const descColor = themeMode === 'dark' ?  'text-black' : 'text-green-200' ;
 
   return (
     <div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto">
@@ -44,14 +44,14 @@ function Project() {
             <img
               src={projects[selectedItemIndex].image}
               alt=""
-              className="h-40 w-48 sm:h-60 sm:w-72 object-contain"
+              className="h-40 w-48 sm:h-56 sm:w-52 object-contain"
             />
           </a>
           <div className="flex flex-col gap-3 sm:gap-5 w-full text-center sm:text-left">
-            <h1 className="text-orange-200 text-xl sm:text-2xl ubuntu-bold-italic">
+            <h1 className={`${orgColor} text-lg sm:text-xl ubuntu-light-italic`}>
               {projects[selectedItemIndex].technologies.join(" , ")}
             </h1>
-            <h1 className={`text-lg sm:text-2xl ubuntu-medium ${descColor}`}>
+            <h1 className=' text-gray-400 text-lg sm:text-xl fredoka-regular '>
               {projects[selectedItemIndex].description}
             </h1>
           </div>

@@ -32,7 +32,7 @@ export const projects = [
         technologies : ["HTML", "CSS", "JavaScript", "Hooks", "Git", "React", "Vite", "Context API"],
         _id: "2",
         title :"To-Do App",
-        description: "• We have created the Todo App which can Add ,Rename ,Mark item ,and it can be store on local Storage.  In this we have used the React Library with the help of Vite and Tailwind and Uses the Context Api for the local Storage on the system. Deployed on Github and Netlify.",
+        description: "We have created the Todo App which can Add ,Rename ,Mark item ,and it can be store on local Storage.  In this we have used the React Library with the help of Vite and Tailwind and Uses the Context Api for the local Storage on the system. Deployed on Github and Netlify.",
         link: "https://66bb4e1d2f3b1a129fe3fe80--papaya-swan-a3d069.netlify.app/",
         image : "/todo.svg"
     },

@@ -8,13 +8,13 @@ import Loader from './Components/Loader.jsx';
 import { ThemeProvider } from './context/theme.jsx';  // Ensure this import is correct
 
 function App() {
-  const [showLoader, setShowLoader] = useState(false);
+  
 
   return (
     <ThemeProvider>
       <div>
         <BrowserRouter>
-          {showLoader ? <Loader /> : null}
+         
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<><ContactUs /><Footer /></>} />

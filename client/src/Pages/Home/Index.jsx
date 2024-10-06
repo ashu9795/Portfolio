@@ -54,7 +54,7 @@ const { themeMode } = useTheme(); // Get the current theme mode
         <Header />
         {/* Wrapper canvas for Matter.js */}
      
-        <div className="absolute inset-0 hidden md:block  w-full  max-w-screen-xl mx-auto " id="wrapper-canvas"></div>
+        <div className="absolute inset-0 hidden md:block   w-full max-w-screen-xl" id="wrapper-canvas"></div>
         <Intro />
        
       </div>

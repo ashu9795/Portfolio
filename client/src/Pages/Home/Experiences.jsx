@@ -7,6 +7,8 @@ function Experiences() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0); // Use const
   const { themeMode } = useTheme();
   const textColor = themeMode === 'dark' ?  'text-black' : 'text-blue-300' ;
+  const orgColor = themeMode === 'dark' ?  'text-black' : 'text-green-200' ;
+  const perColor = themeMode === 'dark' ?  'text-black' : ' text-orange-200' ;
   return (
     <div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto">
       <SectionTitle title="Experiences" />
@@ -34,9 +36,9 @@ function Experiences() {
 
         {/* Detail Section */}
         <div className='flex flex-col gap-3 w-full sm:gap-5'>
-          <h1 className='text-orange-200 text-xl sm:text-2xl ubuntu-bold-italic'>{experiences[selectedItemIndex].period}</h1>
-          <h1 className='text-green-200 text-lg sm:text-2xl ubuntu-bold sm:text-left text-center'>{experiences[selectedItemIndex].Organization}</h1>
-          <h1 className='text-gray-400 text-base sm:text-2xl ubuntu-medium sm:text-left text-center'>{experiences[selectedItemIndex].description}</h1>
+          <h1 className={`${perColor} text-xl sm:text-2xl ubuntu-regular`}>{experiences[selectedItemIndex].period}</h1>
+          <h1 className={`${orgColor} text-lg sm:text-xl fredoka-regular sm:text-left text-center`}>{experiences[selectedItemIndex].Organization}</h1>
+          <h1 className='text-gray-400 text-base sm:text-xl fredoka-regular sm:text-left text-center'>{experiences[selectedItemIndex].description}</h1>
         </div>
       </div>
     </div>
