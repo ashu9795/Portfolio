@@ -6,7 +6,7 @@ function ContactUs() {
     name: 'Ashutosh Gupta',
     email: 'ashutoshg067@gmail.com',
     phone: '9795727437',
-    address: 'Kanpur, Uttar Pradesh, India',
+    address: 'Sultanpur, Uttar Pradesh, India',
   };
 
   return (
