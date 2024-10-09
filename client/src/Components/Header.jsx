@@ -9,7 +9,7 @@ function Header() {
 
 
   const openWhatsApp = () => {
-    const phoneNumber = '9795727437'; // Replace with your WhatsApp number (in international format)
+    const phoneNumber = '+919795727437'; // Replace with your WhatsApp number (in international format)
     const message = encodeURIComponent('Hey Ashutosh, I hope you are doing well');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_self');
