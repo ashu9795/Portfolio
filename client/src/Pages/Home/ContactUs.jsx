@@ -1,6 +1,7 @@
 import React from 'react';
 import SectionTitle from '../../Components/SectionTitle';
 import useTheme from '../../context/theme'; 
+import emailjs from 'emailjs-com';
 
 function ContactUs() {
   const user = {
@@ -10,8 +11,29 @@ function ContactUs() {
     address: 'Sultanpur, Uttar Pradesh, India',
   };
 
+
   const { themeMode } = useTheme(); // Get the current theme mode
   const textColor = themeMode === 'dark' ? 'text-gray-900' : 'text-white';
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      import.meta.env.VITE_APP_SERVICE_ID ,// Service ID from EmailJS
+      import.meta.env.VITE_APP_TEMPLATE_ID, // Template ID from EmailJS
+      e.target,                         // Form element
+      import.meta.env.VITE_APP_USER_ID   // Public Key from EmailJS (User ID)
+    )
+    .then((result) => {
+      console.log(result.text);
+      alert('Email successfully sent!');
+    }, (error) => {
+      console.log(error.text);
+      alert('Failed to send email. Please try again later.');
+    });
+    e.target.reset();
+    
+  };
+
 
   return (
     <div className="flex flex-col items-center justify-center z-10 w-full px-4 sm:px-6 lg:px-8 mt-4 max-w-screen-xl mx-auto">
@@ -41,8 +63,9 @@ function ContactUs() {
         <form
           className="w-full px-4 sm:px-6 lg:px-8 mt-4 max-w-screen-xl mx-auto"
           name="contactUS"
-          data-netlify="true"
-          method="POST" // Needed for Netlify to process form submissions
+          
+          // Needed for Netlify to process form submissions
+          onSubmit={sendEmail} 
         >
           <label htmlFor="name" className={`block mb-2 text-sm font-medium ${textColor}`}>
             Name
