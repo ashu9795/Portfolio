@@ -1,7 +1,7 @@
  export const  certifications =[
 
     {
-        id : "2",
+       
         title : "A.W.S S3",
         Organization : "Coursera",
         period : "June 2024 - August 2024",
@@ -10,7 +10,7 @@
         },
 
     {
- id : "1",
+ 
     title : "Data Science",
     Organization : "DataCamp",
     period : "Jan 2024 - June 2024",
@@ -18,7 +18,7 @@
     description :"Completed the Associate Data Science certification from DataCamp, gaining expertise in data analysis, machine learning, and statistical modeling. Proficient in Python and R, I have developed skills in data manipulation and predictive modeling. Eager to apply my knowledge to real-world data challenges."
     },
     {
-        id : "2",
+        
         title : "Cyber Security",
         Organization : "IBM SkillsBuild",
         period : "June 2023 - july 2023",
@@ -27,7 +27,7 @@
         },
        
             {
-                id : "2",
+               
                 title : "Java Programming",
                 Organization : "Hackerrank", 
                 period : "March 2024 - May 2024",
@@ -35,7 +35,7 @@
                 description :" Completed the Java Basics course from HackerRank, which provided foundational knowledge in Java programming. This course enhanced my understanding of core concepts, including data types, control structures, and object-oriented programming."
             },
                 {
-                    id : "2",
+                
                     title : "SQL",
                     Organization : "Hackerrank",
                     period : "Feb 2024 - May 2024",
@@ -43,7 +43,7 @@
                     description : "Completed the SQL course from HackerRank, which equipped me with essential skills in database management and querying. This course covered key concepts such as data manipulation, aggregation, and advanced query techniques, enhancing my proficiency in SQL."
                     },
         {
-            id : "3",
+         
             title : "Python Programming",
             Organization : "DataCamp",
             period : "June 2023 - April 2024",
@@ -51,7 +51,7 @@
             description : "I completed a Python Programming course from DataCamp. I learned about Python programming concepts such as data types, loops, functions, and object-oriented programming."
             },
             {
-                id : "4",
+                
                 title : "Machine Learning",
                 Organization : "DataCamp",
                 period : "Jan 2024 - May 2024",

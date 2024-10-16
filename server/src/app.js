@@ -15,6 +15,12 @@ app.get("/",(req,res)=>{
     res.send("Hello World")
 })
 
+import mainroute from "./routes/mainCheck.routes.js"
+
+app.use("/api/v1/main", mainroute);
+
+
+
 export {app}
 
 

@@ -1,17 +1,17 @@
 export const experiences = [
-    {   _id: "1",
+    {   
         title :"Jr.Data Analyst Intern",
         Organization: "SWARG",
         period : "June 2024 - September 2026",
         description: "I worked as a Data Analyst Intern at SWARG. I was responsible for analyzing data and providing insights to the team. I also worked on data visualization and dashboard creation using Power BI."
     },
-    {   _id: "2",
+    {  
         title :"Mentor in Academics",
         Organization: "G.C.E.T",
         period : "June 2023 - June 2024",
         description: "I have been selected as a mentor for the junior batch in academics, where I will provide guidance and support to help them excel in their studies. My role involves offering personalized advice, sharing resources, and fostering a collaborative learning environment. I'm excited to help them achieve their academic goals and grow as learners."
     },
-    {   _id: "3",
+    {   
         title :"Coading Club Member",
         Organization: "Loop Club",
         period : "November 2021 - June 2024",
