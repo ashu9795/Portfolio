@@ -1,5 +1,6 @@
 import React, { useEffect, useRef,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const SkillsModal = ({ onClose }) => {
     const modalRef = useRef(null); // Reference to the modal content
    const [hoveredSvgName, setHoveredSvgName] = useState(''); // State to store the name of the hovered SVG
@@ -25,6 +26,13 @@ const SkillsModal = ({ onClose }) => {
       navigate('/contact'); // This will navigate to the ContactUs component
     };
 
+
+
+    const { loading, portfolioData } = useSelector((state) => state.root);
+    const { about } = portfolioData || {}; // Fallback to an empty object if portfolioData is undefined
+    const { description, languages, tools } = about?.[0] || {};
+
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
             <div 
@@ -37,19 +45,17 @@ const SkillsModal = ({ onClose }) => {
                 >
                     &times; {/* Cross mark */}
                 </button>
-                <h1 className="text-blue-400 text-lg fredoka-bold">Skills Overview</h1>
+                <h1 className="text-blue-400 text-lg fredoka-bold">Description</h1>
 <p className="mt-4 fredoka-regular">
-  Skilled Backend Developer adept at developing solid, scalable, and high-performance server-side applications.
-  Functional knowledge of Python, Java, Node.js, and RESTful services. Well-versed with databases and cloud environments.
-  Performance and security are given the utmost importance. Enjoys puzzles and writing good code.
+{description || " "}
 </p>
                 <div className="mt-4">
                     <h2 className="font-semibold fredoka-bold text text-blue-300">Languages:</h2>
-                    <p className='fredoka-regular mt-2'>C/C++, Python, HTML/CSS, JavaScript</p>
+                    <p className='fredoka-regular mt-2'>{languages || " "}</p>
                 </div>
                 <div className="mt-2 pb-10">
                     <h2 className="font-semibold fredoka-bold text-blue-300 ">Tools:</h2>
-                    <p className='fredoka-regular mt-2'>Git/GitHub, Docker, React, Vite, Node.js, RESTful API, Express.js, MongoDB, Mongoose, JWT, Bcrypt</p>
+                    <p className='fredoka-regular mt-2'>{tools || " "}</p>
                 </div>
                 <div className='flex items-center justify-between'>
                 <div className="flex flex-col items-center">

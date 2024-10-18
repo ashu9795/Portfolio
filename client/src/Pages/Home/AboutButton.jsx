@@ -1,6 +1,7 @@
 // AboutButton.js
 import React, { useState } from 'react';
 import SkillsModal from "./SkillsModel"; // Import the SkillsModal component
+import { useSelector } from 'react-redux';
 
 const AboutButton = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -12,6 +13,8 @@ const AboutButton = () => {
     const handleCloseModal = () => {
         setModalOpen(false);
     };
+ 
+  
 
     return (
         <>

@@ -1,9 +1,19 @@
 import React from 'react';
 import AboutButton from './AboutButton';
 import useTheme from '../../context/theme';
+import { useSelector } from 'react-redux';
+
 
 const intro = () => {
-;
+
+    const { loading, portfolioData } = useSelector((state) => state.root);
+
+   
+    const { home } = portfolioData || {};  
+    const { name, title } = home?.[0] || {};
+
+
+
 
   return (
    <>
@@ -20,8 +30,8 @@ const intro = () => {
             </defs>
             </svg>
       <div class="relative  ml-6 md:ml-12">
-        <h1 class=" pointer-events-none text-4xl md:text-[64px] font-['sparton'] mr-16">Ashutosh Gupta</h1>
-        <p class="  pointer-events-none font-['merryweather'] italic my-4 md:my-8">Backend Developer</p>
+        <h1 class=" pointer-events-none text-4xl md:text-[64px] font-['sparton'] mr-16">{ name || " "}</h1>
+        <p class="  pointer-events-none font-['merryweather'] italic my-4 md:my-8">{ title || " "}</p>
        <AboutButton/>
 
       </div>

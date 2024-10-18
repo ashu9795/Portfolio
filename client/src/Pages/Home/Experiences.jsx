@@ -2,13 +2,17 @@ import React, { useState } from 'react'; // Import useState
 import SectionTitle from '../../Components/SectionTitle';
 import { experiences } from '../../Resources/experiences';
 import useTheme from '../../context/theme'; // Import the useTheme hook
-
+import { useSelector } from 'react-redux'; // Import useSelector
 function Experiences() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0); // Use const
   const { themeMode } = useTheme();
   const textColor = themeMode === 'dark' ?  'text-black' : 'text-blue-300' ;
   const orgColor = themeMode === 'dark' ?  'text-black' : 'text-green-200' ;
   const perColor = themeMode === 'dark' ?  'text-black' : ' text-orange-200' ;
+
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { experience } = portfolioData || {};
+  const {title,description,Organization,period} = experience || {};
   return (
     <div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto">
       <SectionTitle title="Experiences" />

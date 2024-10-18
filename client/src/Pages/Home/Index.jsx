@@ -48,18 +48,25 @@ const { themeMode } = useTheme(); // Get the current theme mode
     };
   }, []);
 
+
   return (
+    
+
+    
     <>
       <div className='flex flex-col justify-between h-screen'>
         <Header />
         {/* Wrapper canvas for Matter.js */}
+
+       
      
         <div className="absolute inset-0 hidden md:block   w-full max-w-screen-xl" id="wrapper-canvas"></div>
+        
         <Intro />
        
       </div>
        
-<div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto"></div>
+
 
       <div id="experiences-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
   <Experiences />
