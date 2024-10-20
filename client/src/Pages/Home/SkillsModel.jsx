@@ -28,7 +28,7 @@ const SkillsModal = ({ onClose }) => {
 
 
 
-    const { loading, portfolioData } = useSelector((state) => state.root);
+    const {  portfolioData } = useSelector((state) => state.root);
     const { about } = portfolioData || {}; // Fallback to an empty object if portfolioData is undefined
     const { description, languages, tools } = about?.[0] || {};
 

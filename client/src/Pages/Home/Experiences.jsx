@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; // Import useState
 import SectionTitle from '../../Components/SectionTitle';
-import { experiences } from '../../Resources/experiences';
+
 import useTheme from '../../context/theme'; // Import the useTheme hook
 import { useSelector } from 'react-redux'; // Import useSelector
 function Experiences() {
@@ -10,16 +10,16 @@ function Experiences() {
   const orgColor = themeMode === 'dark' ?  'text-black' : 'text-green-200' ;
   const perColor = themeMode === 'dark' ?  'text-black' : ' text-orange-200' ;
 
-  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { portfolioData } = useSelector((state) => state.root);
   const { experience } = portfolioData || {};
-  const {title,description,Organization,period} = experience || {};
+ 
   return (
     <div className="flex flex-col items-center justify-center z-10 w-full px-4 mt-4 max-w-screen-xl mx-auto">
       <SectionTitle title="Experiences" />
       <div className="flex flex-col lg:flex-row py-10 lg:gap-20 gap-10 w-full">
         {/* Sidebar (List of Experiences) */}
         <div className='flex flex-col gap-5 border-l-2 border-gray-400 w-full lg:w-2/4 overflow-y-auto max-h-[400px]'>
-          {experiences.map((experience, index) => (
+          {  experience && experience.length > 0 ?( experience.map((ex, index) => (
             <div
               key={index}
               onClick={() => setSelectedItemIndex(index)}
@@ -32,17 +32,30 @@ function Experiences() {
                     ? 'text-black' // Light text color for dark mode
                     : 'text-white' // Default text color for light mode
                 }`}>
-                {experience.title}
+                {ex.title}
               </h1>
             </div>
-          ))}
+          ))
+          ) : (
+            <p>No experiences available.</p>
+          )}
         </div>
 
         {/* Detail Section */}
         <div className='flex flex-col gap-3 w-full sm:gap-5'>
-          <h1 className={`${perColor} text-xl sm:text-2xl ubuntu-regular`}>{experiences[selectedItemIndex].period}</h1>
-          <h1 className={`${orgColor} text-lg sm:text-xl fredoka-regular sm:text-left text-center`}>{experiences[selectedItemIndex].Organization}</h1>
-          <h1 className='text-gray-400 text-base sm:text-xl fredoka-regular sm:text-left text-center'>{experiences[selectedItemIndex].description}</h1>
+        {  experience && experience.length > 0 ?( 
+          <>
+
+          <h1 className={`${perColor} text-xl sm:text-2xl ubuntu-regular`}>{experience[selectedItemIndex].period}</h1>
+          <h1 className={`${orgColor} text-lg sm:text-xl fredoka-regular sm:text-left text-center`}>{experience[selectedItemIndex].Organization}</h1>
+          <h1 className='text-gray-400 text-base sm:text-xl fredoka-regular sm:text-left text-center'>{experience[selectedItemIndex].description}</h1>
+
+          </>
+         ): (
+          <p>No experiences available.</p>
+        )}
+
+
         </div>
       </div>
     </div>

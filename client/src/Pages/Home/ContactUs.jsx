@@ -2,14 +2,14 @@ import React from 'react';
 import SectionTitle from '../../Components/SectionTitle';
 import useTheme from '../../context/theme'; 
 import emailjs from 'emailjs-com';
+import { useSelector } from 'react-redux';
 
 function ContactUs() {
-  const user = {
-    name: 'Ashutosh Gupta',
-    email: 'ashutoshg067@gmail.com',
-    phone: '9795727437',
-    address: 'Sultanpur, Uttar Pradesh, India',
-  };
+  
+
+  const {  portfolioData } = useSelector((state) => state.root);
+  const {contact} = portfolioData || {};
+  const {name,email,phone,address} = contact?.[0] || {};
 
 
   const { themeMode } = useTheme(); // Get the current theme mode
@@ -44,10 +44,10 @@ function ContactUs() {
         <div className="lg:w-1/2 mb-4 md:mr-4 sm:px-4">
           <pre className="p-4 rounded-md shadow-md">
             {'{'}
-            <div>Name: {user.name}</div>
-            <div>Email: {user.email}</div>
-            <div>Phone: {user.phone}</div>
-            <div>Address: {user.address}</div>
+            <div>Name: {name|| " "}</div>
+            <div>Email: {email|| " "}</div>
+            <div>Phone: {phone|| " "}</div>
+            <div>Address: {address || " "}</div>
             {'}'}
           </pre>
         </div>
