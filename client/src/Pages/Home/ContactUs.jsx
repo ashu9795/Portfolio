@@ -42,26 +42,31 @@ function ContactUs() {
       <div className="flex flex-col lg:flex-row py-10 lg:gap-20 gap-10 h-full">
         {/* Left-aligned text */}
         <div className="lg:w-1/2 mb-4 md:mr-4 sm:px-4">
-          <pre className="p-4 rounded-md shadow-md">
+          <pre className="p-4 rounded-md shadow-md ">
             {'{'}
             <div>Name: {name|| " "}</div>
             <div>Email: {email|| " "}</div>
             <div>Phone: {phone|| " "}</div>
             <div>Address: {address || " "}</div>
             {'}'}
+           
           </pre>
+          <div className="hidden lg:block "> {/* Only for desktop */}
+            <img src="contact-me.svg" alt="phone" className="ml-[65%]" />
+          </div>
         </div>
 
         {/* Centered image */}
-        <div className="flex flex-col lg:w-1/2 md:flex-row items-center mt-10 sm:px-4">
-          <div className="w-full">
-            <img src="contact-me.svg" alt="phone" />
+        <div className="relative w-full lg:w-1/2">
+          
+          <div className="block lg:hidden mt-10  sm:px-4"> {/* For mobile and tablet */}
+            <img src="contact-me.svg" alt="phone" className="w-[80%]" />
           </div>
         </div>
 
         {/* Form Section */}
         <form
-          className="w-full px-4 sm:px-6 lg:px-8 mt-4 max-w-screen-xl mx-auto"
+          className="w-full px-4 sm:px-6 lg:px-8 mt-4 max-w-screen-xl mx-auto  md:ml-[20%] "
           name="contactUS"
           
           // Needed for Netlify to process form submissions
@@ -86,7 +91,7 @@ function ContactUs() {
               type="text"
               id="name"
               name="name"
-              className="bg-gray-50 border-2 outline-none border-gray-300 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   text-gray-900  dark:text-white"
+              className="bg-gray-50 min-w-[265px] border-2 outline-none border-gray-300 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   text-gray-900  dark:text-white"
               placeholder="Enter your name"
               style={{ maxWidth: '400px' }}
               required
@@ -113,7 +118,7 @@ function ContactUs() {
               type="email"
               id="email"
               name="email"
-              className="bg-gray-50 border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              className="bg-gray-50  min-w-[265px] border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               placeholder="name@gmail.com"
               style={{ maxWidth: '400px' }}
               required
@@ -128,7 +133,7 @@ function ContactUs() {
               id="message"
               name="message"
               rows="8"
-              className="bg-gray-50 border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              className="bg-gray-50 border-2 min-w-[265px] outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
               style={{ maxWidth: '400px' }}
               required
             ></textarea>
@@ -136,7 +141,7 @@ function ContactUs() {
 
           <button
             type="submit"
-            className="w-full max-w-[25rem] h-12 mx-auto mt-4 text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm focus:outline-none"
+            className="w-full max-w-[25rem] h-12 mx-auto mt-4 min-w-[265px] text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm focus:outline-none"
           >
             Send
           </button>
