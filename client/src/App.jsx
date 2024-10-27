@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home/Index';
+import Admin from './Pages/Admin/Index.jsx';
 import ContactUs from './Pages/Home/ContactUs.jsx';
 import './App.css';
 import Footer from './Pages/Home/Footer.jsx';
@@ -9,6 +10,7 @@ import { ThemeProvider } from './context/theme.jsx';  // Ensure this import is c
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { SetPortfolioData } from './redux/rootSlice.js';
+
 
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<><ContactUs /><Footer /></>} />
+            <Route path = "/Admin" element = {<Admin/>} />
           </Routes>
         </BrowserRouter>
       </div>
