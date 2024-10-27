@@ -7,7 +7,7 @@ body {
 }
 
 body.dark-mode {
-  background-color: rgb(239, 254, 201); /* Dark mode background */
+  background-color: rgb(230, 231, 227); /* Dark mode background */
   color: black; /* Dark mode text color */
 }
 

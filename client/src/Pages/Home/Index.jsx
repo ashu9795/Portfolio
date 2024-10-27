@@ -11,80 +11,82 @@ import Footer from './Footer.jsx';
 import useTheme from '../../context/theme'; // Import the useTheme hook
 
 function Index() {
+  const { themeMode } = useTheme(); // Get the current theme mode
+
   useEffect(() => {
     // Scroll to top on component mount with a slight delay
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 100); // Delay of 100ms to ensure component mounts first
   }, []);
-  
 
-const { themeMode } = useTheme(); // Get the current theme mode
   useEffect(() => {
+    let cleanup; // To store the cleanup function
+
     const canvas = document.querySelector("#wrapper-canvas");
-    const header = document.querySelector("header"); // Assuming you have a <header> tag in Header component
+    const header = document.querySelector("header");
 
     function adjustCanvasSize() {
       if (canvas && header) {
-        // Set canvas width to match the header's width
         canvas.style.width = `${header.offsetWidth}px`;
-        canvas.style.height = `100vh`; // Or adjust based on your needs
+        canvas.style.height = `100vh`; // Adjust based on your needs
       }
     }
 
-    // Run this function initially to set canvas size
-    adjustCanvasSize();
+    if (themeMode === 'dark') {
+      // If dark mode, remove canvas display and stop Matter.js
+      if (canvas) {
+        canvas.style.display = 'none'; // Hide canvas in dark mode
+      }
+      if (cleanup) {
+        cleanup(); // Cleanup Matter.js if it was running
+      }
+    } else {
+      // In light mode, show canvas and run Matter.js
+      if (canvas) {
+        canvas.style.display = 'block'; // Show canvas in light mode
+        adjustCanvasSize(); // Set the correct size
+        cleanup = runMatter(canvas); // Initialize Matter.js
+      }
 
-    // Run Matter.js setup
-    const cleanup = runMatter(canvas);
+      window.addEventListener("resize", adjustCanvasSize); // Resize canvas on window resize
+    }
 
-    // Adjust the canvas size when window resizes
-    window.addEventListener("resize", adjustCanvasSize);
-
-    // Cleanup function to stop Matter.js and remove event listener
+    // Cleanup on unmount or when themeMode changes
     return () => {
-      cleanup(); // Stops Matter.js
-      window.removeEventListener("resize", adjustCanvasSize); // Remove resize listener
+      if (cleanup) cleanup(); // Stop Matter.js
+      window.removeEventListener("resize", adjustCanvasSize); // Remove resize event listener
     };
-  }, []);
-
+  }, [themeMode]); // Re-run on themeMode change
 
   return (
-    
-
-    
     <>
       <div className='flex flex-col justify-between h-screen'>
         <Header />
-        {/* Wrapper canvas for Matter.js */}
 
-       
-     
-        <div className="absolute inset-0 hidden md:block   w-full max-w-screen-xl" id="wrapper-canvas"></div>
-        
+        {/* Wrapper canvas for Matter.js, conditionally shown in light mode */}
+        <div className="absolute inset-0 hidden md:block w-full max-w-screen-xl" id="wrapper-canvas"></div>
+
         <Intro />
-       
       </div>
-       
-
 
       <div id="experiences-section" className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
-  <Experiences />
-</div>
+        <Experiences />
+      </div>
 
-<div  className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
-  <Project />
-</div>
-<div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
-  <Certification />
-</div>
-<div   className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
-  <ContactUs />
-</div>
+      <div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+        <Project />
+      </div>
 
-<Footer />
+      <div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+        <Certification />
+      </div>
 
-       
+      <div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+        <ContactUs />
+      </div>
+
+      <Footer />
     </>
   );
 }
