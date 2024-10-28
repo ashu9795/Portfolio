@@ -1,14 +1,14 @@
 import React from 'react';
-import Header from '../../Components/Header';
+import HeaderAdmin from '../../Components/HeaderAdmin.jsx';
 import { Tabs } from 'antd';
 import AdminAbout from './AdminAbout.jsx';
 import AdminIntro from './AdminIntro.jsx';
 import"../../index.css";
 
 const App = () => (
-  <>
-    <Header />
-    <div className="text-blue-500 font-bold ml-5">
+  <div className='bg-gray-400 min-h-screen'>
+    <HeaderAdmin/>
+    <div className=" font-bold ml-5">
       <Tabs
         defaultActiveKey="1"
         items={[
@@ -26,7 +26,7 @@ const App = () => (
         ]}
       />
     </div>
-  </>
+  </div>
 );
 
 export default App;
