@@ -44,7 +44,7 @@ function Index() {
     } else {
       // In light mode, show canvas and run Matter.js
       if (canvas) {
-        canvas.style.display = 'block'; // Show canvas in light mode
+       
         adjustCanvasSize(); // Set the correct size
         cleanup = runMatter(canvas); // Initialize Matter.js
       }
@@ -81,12 +81,13 @@ function Index() {
       <div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
         <Certification />
       </div>
-
       <div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
         <ContactUs />
       </div>
 
-      <Footer />
+      <div className="w-full md:flex-row items-center justify-center px-4 md:px-8 lg:px-16 relative">
+        <Footer />
+      </div>
     </>
   );
 }
