@@ -24,6 +24,9 @@ app.get("/",(req,res)=>{
 import mainroute from "./routes/mainCheck.routes.js"
 
 app.use("/api/v1/main", mainroute);
+import homerouter from "./routes/home.route.js"
+
+app.use("/api/v1/home", homerouter);
 
 
 

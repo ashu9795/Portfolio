@@ -1,12 +1,21 @@
 import React from 'react';
 import { Form, Input } from 'antd';
-
+import { useSelector } from 'react-redux';
 function AdminAbout() {
+
+  const { portfolioData } = useSelector((state) => state.root);
+
+  const onFinish = (values) => {
+    console.log('Success:', values);
+   
+  };
+
   return (
-    <div className="">
+    <div >
       
       {/* Description Form */}
-      <Form className=" p-8 rounded-lg  ">
+         <Form onFinish={onFinish}      
+      className=" p-8 rounded-lg  "  initialValues={portfolioData?.about[0]}>
        
 
       {/* Languages Form */}
@@ -37,7 +46,14 @@ function AdminAbout() {
           />
         </Form.Item>
       </Form>
-
+      <div className='flex justify-center w-full'>
+          <button 
+            className='px-10 rounded-lg py-2 bg-black text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-800'
+            type='submit'
+          >
+            SAVE
+          </button>
+        </div>
     </div>
   );
 }
