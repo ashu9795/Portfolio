@@ -12,7 +12,7 @@ const AdminIntro = () => {
       // Use POST instead of GET
       const response = await axios.post("http://localhost:8000/api/v1/home/update_data", values);
       
-      console.log(response.data); // Log the response data
+     alert("Data updated successfully");
 
       // You might want to handle the response or display a success message here
     } catch (error) {

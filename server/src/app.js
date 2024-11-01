@@ -29,6 +29,10 @@ import homerouter from "./routes/home.route.js"
 app.use("/api/v1/home", homerouter);
 
 
+import aboutRouter from "./routes/about.route.js"
+
+app.use("/api/v1/about", aboutRouter);
+
 
 export {app}
 
