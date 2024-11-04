@@ -7,12 +7,19 @@ function AdminAbout() {
   const { portfolioData } = useSelector((state) => state.root);
 
   const onFinish = async (values) => {
+    const confirmSave = window.confirm("Do you want to save changes?");
+    if(confirmSave){
     try {
       const response = await axios.post("http://localhost:8000/api/v1/about/update_about", values);
       alert("About updated successfully");
     } catch (error) {
       console.error("Error updating data:", error);
     }
+  } else {
+
+      console.log("Changes were not saved.");
+
+  }
   };
 
   return (

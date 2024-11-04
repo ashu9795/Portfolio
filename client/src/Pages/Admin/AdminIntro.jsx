@@ -3,24 +3,30 @@ import { Form, Input } from 'antd';
 import { useSelector } from 'react-redux';
 import axios from 'axios'; // Import axios
 
-
 const AdminIntro = () => {
   const { portfolioData } = useSelector((state) => state.root);
 
   const onFinish = async (values) => {
-    try {
-      // Use POST instead of GET
-      const response = await axios.post("http://localhost:8000/api/v1/home/update_data", values);
-      
-     alert("Data updated successfully");
+    const confirmSave = window.confirm("Do you want to save changes?");
 
-      // You might want to handle the response or display a success message here
-    } catch (error) {
-      console.error("Error updating data:", error); // Log any errors
-      // You may want to show an error message to the user
+    if (confirmSave) {
+      try {
+        // Use POST instead of GET
+        const response = await axios.post("http://localhost:8000/api/v1/home/update_data", values);
+        
+        alert("Data updated successfully");
+
+        // You might want to handle the response or display a success message here
+      } catch (error) {
+        console.error("Error updating data:", error); // Log any errors
+        // You may want to show an error message to the user
+      }
+
+      // Reset the form
+    } else {
+      // Handle the cancel action if needed
+      console.log("Changes were not saved.");
     }
-
-     // Reset the form
   };
 
   return (

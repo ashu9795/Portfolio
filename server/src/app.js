@@ -33,6 +33,10 @@ import aboutRouter from "./routes/about.route.js"
 
 app.use("/api/v1/about", aboutRouter);
 
+import aboutExperience from "./routes/experiences.route.js"
+
+app.use("/api/v1/experience", aboutExperience);
+
 
 export {app}
 

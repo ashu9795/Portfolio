@@ -5,6 +5,7 @@ import AdminAbout from './AdminAbout.jsx';
 import AdminIntro from './AdminIntro.jsx';
 import { useSelector } from 'react-redux';
 import"../../index.css";
+import AdminExperience from './AdminExperience.jsx';
 
 
 const App = () => {
@@ -26,6 +27,11 @@ const App = () => {
                 label: 'About',
                 key: '2',
                 children: <AdminAbout />,
+              },
+              {
+                label: 'Expereince',
+                key: '3',
+                children: <AdminExperience />,
               },
             ]}
           />
