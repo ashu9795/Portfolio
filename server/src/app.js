@@ -37,6 +37,10 @@ import aboutExperience from "./routes/experiences.route.js"
 
 app.use("/api/v1/experience", aboutExperience);
 
+import aboutProject from "./routes/project.route.js"
+
+app.use("/api/v1/project", aboutProject);
+
 
 export {app}
 
