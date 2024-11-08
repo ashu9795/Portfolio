@@ -7,7 +7,7 @@ import  {Home} from "../project.modals/home.modal.js"
 const updateData = asyncHandeler(async (req, res) => {
     const { name, title } = req.body;
 
-    if (!name || !title) {
+    if (!name && !title) {
         throw new ApiError(400, "Please provide all the required fields");
     }
 

@@ -41,6 +41,13 @@ import aboutProject from "./routes/project.route.js"
 
 app.use("/api/v1/project", aboutProject);
 
+import aboutCertification from "./routes/certification.route.js"
+
+app.use("/api/v1/certification", aboutCertification);
+import aboutContact from "./routes/contact.route.js"
+
+app.use("/api/v1/contact", aboutContact);
+
 
 export {app}
 
