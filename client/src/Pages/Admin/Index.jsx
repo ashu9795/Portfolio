@@ -6,7 +6,7 @@ import AdminIntro from './AdminIntro.jsx';
 import { useSelector } from 'react-redux';
 import"../../index.css";
 import AdminExperience from './AdminExperience.jsx';
-
+import AdminProject from './AdminProject.jsx';
 
 const App = () => {
   const { portfolioData } = useSelector((state) => state.root); // Move this line here
@@ -32,6 +32,11 @@ const App = () => {
                 label: 'Expereince',
                 key: '3',
                 children: <AdminExperience />,
+              },
+              {
+                label: 'Project',
+                key: '4',
+                children: <AdminProject />,
               },
             ]}
           />

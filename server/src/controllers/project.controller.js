@@ -5,62 +5,72 @@ import asyncHandeler from  "../utils/asyncHandler.js"
 import {Project} from "../project.modals/project.modal.js"
 import { uploadCloudinary, deleteCloudinaryImage } from "../utils/cloudinary.js"
 
-const addNewProject = asyncHandeler(async (req,res)=>{
+const addNewProject = asyncHandeler(async (req, res) => {
+    // Destructure the fields from the request body
+    const { link, description, title, technologies } = req.body;
 
- const { link,description,title,technologies } = req.body;
+    // Validate required fields
+    if (!link) {
+        throw new ApiError(400, "Link is required");
+    }
+    if (!description) {
+        throw new ApiError(400, "Description is required");
+    }
+    if (!title) {
+        throw new ApiError(400, "Title is required");
+    }
+    
+    // Check if technologies is provided and split it into an array
+    if (!technologies) {
+        throw new ApiError(400, "Technologies is required");
+    }
+    
+    // Split the technologies string by commas and trim spaces
+    const technologiesArray = technologies.split(',').map(tech => tech.trim());
 
- if(!link)
- {
-    throw new ApiError(400, "Link is required")
- }
-    if(!description)
-    {
-        throw new ApiError(400, "Description is required")
-    }
-    if(!title)
-    {
-        throw new ApiError(400, "Title is required")
-    }
-    if (!technologies || !Array.isArray(technologies)) {
+    // Validate that the technologies array is not empty
+    if (!Array.isArray(technologiesArray) || technologiesArray.length === 0) {
         throw new ApiError(400, "Technologies should be a non-empty array");
     }
 
-    const imageLocalPath = req.file?.path||req.file?.image[0]?.path
+    // Check if the image was uploaded
+    const imageLocalPath = req.file?.path || req.body.image; // Image might come in the form of a base64 string or file path
 
-    if(!imageLocalPath)
-    {
-        throw new ApiError(400, "Image is required")
+    if (!imageLocalPath) {
+        throw new ApiError(400, "Image is required");
     }
 
-    const image = await uploadCloudinary(imageLocalPath)
+    // Upload image to Cloudinary
+    const image = await uploadCloudinary(imageLocalPath);
 
-   
     if (!image || !image.url) {
         throw new ApiError(500, "Failed to upload image to Cloudinary");
     }
 
-
+    // Create a new project instance
     const project = new Project({
-        image : image.url,
-        imagePublicId : image.public_id,
+        image: image.url,
+        imagePublicId: image.public_id,
         link,
         description,
         title,
-        technologies
-    })
+        technologies: technologiesArray // Set the technologies array
+    });
 
-
-    if(!project)
-    {
-        throw new ApiError(500, "Project not created")
+    // Save the project to the database
+    if (!project) {
+        throw new ApiError(500, "Project not created");
     }
 
     await project.save();
 
-    res.status(201).json(new ApiResponce(201, project , "Project created"))
+    // Send the response
+    res.status(201).json(new ApiResponce(201, project, "Project created"));
+});
 
 
-})
+   
+
 
 const deleteProject = asyncHandeler(async (req, res) => {
     const { id } = req.params;
