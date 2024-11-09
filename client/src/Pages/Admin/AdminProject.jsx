@@ -84,39 +84,52 @@ function AdminProject() {
                         +New
                     </button>
                 </div>
-                <div className="flex flex-wrap gap-4 justify-start">
-                    {project && project.length > 0 && (
-                        project.map((ex, index) => (
-                            <div
-                                key={index}
-                                className="p-4 border border-gray-300 rounded-lg bg-white shadow-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4 relative"
-                            >
-                                <h1 className="text-xl sm:text-2xl m-3 font-semibold">{ex.title}</h1>
-                                <h2 className="text-sm sm:text-xl m-3 text-gray-900 whitespace-normal break-words text-center">{ex.technologies + " , "}</h2>
-                                <h2 className="text-xs sm:text-sm m-3 text-gray-500">{ex.description}</h2>
-                                
-                                <img src={ex.image} alt="image" className="w-24 sm:w-32 m-3 h-24 sm:h-32 object-cover mx-auto" />
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+    {project && project.length > 0 && (
+        project.map((ex, index) => (
+            <div
+                key={index}
+                className="p-6 border border-gray-300 rounded-lg bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 w-full relative flex flex-col items-center"
+            >
+                {/* Title */}
+                <h1 className="text-2xl font-semibold text-center text-gray-800 mb-2">{ex.title}</h1>
+                
+                {/* Technologies */}
+                <h2 className="text-sm sm:text-xl m-3 text-gray-900 whitespace-normal break-words text-center max-w-full">
+    {ex.technologies + " , "}
+</h2>
 
-                                <div className="flex justify-end space-x-2 mt-4">
-                                    <button
-                                        className="px-2 sm:px-4 rounded-lg py-1 sm:py-2 bg-blue-400 text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-800"
-                                        type="button"
-                                        onClick={() => handleClick(ex)}
-                                    >
-                                        Edit
-                                    </button>
-                                    <button
-                                        className="px-2 sm:px-4 rounded-lg py-1 sm:py-2 bg-red-600 text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-800"
-                                        type="button"
-                                        onClick={() => delClick(ex._id)}
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-                            </div>
-                        ))
-                    )}
+                
+                {/* Description */}
+                <p className="text-sm text-gray-600 text-center mb-4 px-3">{ex.description}</p>
+
+                {/* Image */}
+                <img 
+                    src={ex.image} 
+                    alt={ex.title} 
+                    className="w-24 sm:w-32 mb-4 h-24 sm:h-32 object-cover  "
+                />
+
+                {/* Action Buttons */}
+                <div className="flex justify-between w-full mt-auto space-x-2">
+                    <button
+                        className="px-4 py-2 rounded-lg bg-blue-500 text-white font-semibold transition-transform transform hover:scale-105 hover:bg-blue-700"
+                        onClick={() => handleClick(ex)}
+                    >
+                        Edit
+                    </button>
+                    <button
+                        className="px-4 py-2 rounded-lg bg-red-600 text-white font-semibold transition-transform transform hover:scale-105 hover:bg-red-800"
+                        onClick={() => delClick(ex._id)}
+                    >
+                        Delete
+                    </button>
                 </div>
+            </div>
+        ))
+    )}
+</div>
+
             </div>
 
             <Modal

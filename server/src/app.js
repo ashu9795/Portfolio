@@ -48,6 +48,10 @@ import aboutContact from "./routes/contact.route.js"
 
 app.use("/api/v1/contact", aboutContact);
 
+import aboutlogin from "./routes/login.routes.js"
+
+app.use("/api/v1/login", aboutlogin);
+
 
 export {app}
 

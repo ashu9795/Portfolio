@@ -10,6 +10,7 @@ import { ThemeProvider } from './context/theme.jsx';  // Ensure this import is c
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { SetPortfolioData,SetReloadData } from './redux/rootSlice.js';
+import AdminLogin from './Pages/Admin/AdminLogin.jsx';
 
 
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<><ContactUs /><Footer /></>} />
             <Route path = "/Admin" element = {<Admin/>} />
+            <Route path = "/Login" element = {<AdminLogin/>} />
           </Routes>
         </BrowserRouter>
       </div>
