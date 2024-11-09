@@ -5,104 +5,59 @@ import {Certification} from "../project.modals/certification.model.js"
  import {uploadCloudinary, deleteCloudinaryImage} from "../utils/cloudinary.js"
 
 
-// const addCertification = asyncHandeler(async (req, res) => {
-//     const {description,Organization,title,period} = req.body;
+const addCertification = asyncHandeler(async (req, res) => {
+    const {description,Organization,title,period} = req.body;
 
-//   if(!description)
-//   {
-//         throw new ApiError(400, "Description is required")
-//   }
-//     if(!Organization)
-//     {
-//         throw new ApiError(400, "Organization is required")
-//     }
-//     if(!title)
-//     {
-//         throw new ApiError(400, "Title is required")
-//     }
+  if(!description)
+  {
+        throw new ApiError(400, "Description is required")
+  }
+    if(!Organization)
+    {
+        throw new ApiError(400, "Organization is required")
+    }
+    if(!title)
+    {
+        throw new ApiError(400, "Title is required")
+    }
 
-//     if(!period)
-//     {
-//         throw new ApiError(400, "Period is required")
-//     }
+    if(!period)
+    {
+        throw new ApiError(400, "Period is required")
+    }
       
 
-//     const imageLocalPath = req.file?.path||req.file?.image[0]?.path
+    const imageLocalPath = req.file?.path||req.file?.image[0]?.path
 
-//  if(!imageLocalPath)
-//  {
-//         throw new ApiError(400, "Image is required")
-//  }
+ if(!imageLocalPath)
+ {
+        throw new ApiError(400, "Image is required")
+ }
 
-//     const image = await uploadCloudinary(imageLocalPath)
+    const image = await uploadCloudinary(imageLocalPath)
 
-//     if(!image)
-//     {
-//         throw new ApiError(500, "Failed to upload image to Cloudinary")
-//     }
+    if(!image)
+    {
+        throw new ApiError(500, "Failed to upload image to Cloudinary")
+    }
 
  
-//     const certification = new Certification({
-//         description,
-//         image : image.url,
-//         Organization,
-//         title,
-//         period
-//     });
-//     await certification.save();
-//      if(!certification){
-//          throw new ApiError(400, "Certification not added");
-//      }
-//         res.status(200).json(new ApiResponce(200,"Certification added", certification));
-
-// })
-
-const addCertification = asyncHandler(async (req, res) => {
-    const { description, Organization, title, period } = req.body;
-    const imageBase64 = req.body.image; // Assuming the image is being sent as base64 in the request body
-
-    // Validate the inputs
-    if (!description) {
-        throw new ApiError(400, "Description is required");
-    }
-    if (!Organization) {
-        throw new ApiError(400, "Organization is required");
-    }
-    if (!title) {
-        throw new ApiError(400, "Title is required");
-    }
-    if (!period) {
-        throw new ApiError(400, "Period is required");
-    }
-
-    // Check if image was provided
-    if (!imageBase64) {
-        throw new ApiError(400, "Image is required");
-    }
-
-    // Upload image to Cloudinary directly using the base64 data
-    const image = await uploadCloudinary(imageBase64);
-
-    if (!image) {
-        throw new ApiError(500, "Failed to upload image to Cloudinary");
-    }
-
-    // Create new certification entry in the database
     const certification = new Certification({
         description,
-        image: image.url,
+        image : image.url,
         Organization,
         title,
-        period,
+        period
     });
-
     await certification.save();
-    if (!certification) {
-        throw new ApiError(400, "Certification not added");
-    }
+     if(!certification){
+         throw new ApiError(400, "Certification not added");
+     }
+        res.status(200).json(new ApiResponce(200,"Certification added", certification));
 
-    res.status(200).json(new ApiResponce(200, "Certification added", certification));
-});
+})
+
+
 
 const deleteCertification = asyncHandeler(async (req, res) => {
     const { id } = req.params;
