@@ -11,30 +11,54 @@ cloudinary.config({
 });
 
 
-const uploadCloudinary = async (localFilePath) => {
+// const uploadCloudinary = async (localFilePath) => {
+//     try {
+//         if (!localFilePath) {
+//             console.log("No file to upload - localFilePath is missing.");
+//             return null;
+//         }
+
+//         // Attempt to upload to Cloudinary
+//         const result = await cloudinary.uploader.upload(localFilePath, { resource_type: "auto" });
+        
+//         if (!result) {
+//             console.log("Cloudinary did not return a result.");
+//             return null;
+//         }
+
+//         // Unlink the file after a successful upload
+//         fs.unlinkSync(localFilePath);
+//         return result;
+
+//     } catch (error) {
+//         console.error("Unable to upload to Cloudinary:", error);
+//         return null;
+//     }
+// };
+const uploadCloudinary = async (imageData) => {
     try {
-        if (!localFilePath) {
-            console.log("No file to upload - localFilePath is missing.");
+        if (!imageData) {
+            console.log("No image data to upload.");
             return null;
         }
 
-        // Attempt to upload to Cloudinary
-        const result = await cloudinary.uploader.upload(localFilePath, { resource_type: "auto" });
-        
+        // If the image is base64, upload directly to Cloudinary
+        const result = await cloudinary.uploader.upload(imageData, {
+            resource_type: "auto", // Automatically detect file type (image, video, etc.)
+        });
+
         if (!result) {
             console.log("Cloudinary did not return a result.");
             return null;
         }
 
-        // Unlink the file after a successful upload
-        fs.unlinkSync(localFilePath);
-        return result;
-
+        return result; // Return the result which includes the URL
     } catch (error) {
         console.error("Unable to upload to Cloudinary:", error);
         return null;
     }
 };
+
 const deleteCloudinaryImage = async (publicId) => {
     try {
         const result = await cloudinary.uploader.destroy(publicId);

@@ -22,26 +22,32 @@ function AdminCertification() {
             if (selectedFile) {
                 formData.append("image", selectedFile);
             }
-
-            if (!selectedItemForEdit) {
-                await axios.post(`${import.meta.env.VITE_APP_SERVER}api/v1/certification/add_certification`, formData, {
-                    headers: { "Content-Type": "multipart/form-data" }
-                });
-                alert("Project added successfully");
-            } else {
-                await axios.put(`${import.meta.env.VITE_APP_SERVER}api/v1/certification/update_certification/${selectedItemForEdit._id}`, formData, {
-                    headers: { "Content-Type": "multipart/form-data" }
-                });
-                alert("Project updated successfully");
-            }
+    
+            console.log("Submitting form data:", formData); // Debugging line
+    
+            const url = selectedItemForEdit
+                ? `${import.meta.env.VITE_APP_SERVER}api/v1/certification/update_certification/${selectedItemForEdit._id}`
+                : `${import.meta.env.VITE_APP_SERVER}api/v1/certification/add_certification`;
+    
+            const response = await axios({
+                method: selectedItemForEdit ? 'put' : 'post',
+                url,
+                data: formData,
+                headers: { "Content-Type": "multipart/form-data" }
+            });
+    
+            console.log("Server response:", response); // Debugging line
+    
+            alert(selectedItemForEdit ? "Project updated successfully" : "Project added successfully");
             
             setShowAddEditModal(false);
             setSelectedFile(null);
             dispatch(SetReloadData(true));
         } catch (error) {
-            console.log(error);
+            console.error("Error submitting form:", error); // Debugging line
         }
     };
+    
 
     const handleClick = (ex) => {
         setShowAddEditModal(true);
