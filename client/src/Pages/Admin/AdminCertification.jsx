@@ -4,9 +4,9 @@ import { Modal, Form, Input, Image } from 'antd';
 import axios from 'axios';
 import { SetReloadData } from "../../redux/rootSlice.js";
 
-function AdminProject() {
+function AdminCertification() {
     const { portfolioData } = useSelector((state) => state.root);
-    const { project } = portfolioData || {};
+    const { certification } = portfolioData || {};
     const [showAddEditModal, setShowAddEditModal] = useState(false);
     const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -24,12 +24,12 @@ function AdminProject() {
             }
 
             if (!selectedItemForEdit) {
-                await axios.post("http://localhost:8000/api/v1/project/add_project", formData, {
+                await axios.post("http://localhost:8000/api/v1/certification/add_certification", formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
                 alert("Project added successfully");
             } else {
-                await axios.put(`http://localhost:8000/api/v1/project/update_project/${selectedItemForEdit._id}`, formData, {
+                await axios.put(`http://localhost:8000/api/v1/certification/update_certification/${selectedItemForEdit._id}`, formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
                 alert("Project updated successfully");
@@ -60,8 +60,8 @@ function AdminProject() {
         const confirmDelete = window.confirm("Do you want to delete this project?");
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:8000/api/v1/project/del_project/${id}`);
-                alert("Project deleted successfully");
+                await axios.delete(`http://localhost:8000/api/v1/certification/del_certification/${id}`);
+                alert("Certification deleted successfully");
                 dispatch(SetReloadData(true));
             } catch (error) {
                 console.log(error);
@@ -85,15 +85,16 @@ function AdminProject() {
                     </button>
                 </div>
                 <div className="flex flex-wrap gap-4 justify-start">
-                    {project && project.length > 0 && (
-                        project.map((ex, index) => (
+                    {certification && certification.length > 0 && (
+                        certification.map((ex, index) => (
                             <div
                                 key={index}
                                 className="p-4 border border-gray-300 rounded-lg bg-white shadow-md w-full sm:w-1/2 md:w-1/3 lg:w-1/4 relative"
                             >
                                 <h1 className="text-xl sm:text-2xl m-3 font-semibold">{ex.title}</h1>
-                                <h2 className="text-sm sm:text-xl m-3 text-gray-900 whitespace-normal break-words text-center">{ex.technologies + " , "}</h2>
-                                <h2 className="text-xs sm:text-sm m-3 text-gray-500">{ex.description}</h2>
+                                <h2 className="text-sm sm:text-xl m-3 text-gray-900 whitespace-normal break-words text-center">{ex.Organization}</h2>
+                                <h2 className="text-lg m-5 text-gray-600">{ex.period}</h2>
+                                <h2 className="text-sm text-gray-500">{ex.description}</h2>
                                 
                                 <img src={ex.image} alt="image" className="w-24 sm:w-32 m-3 h-24 sm:h-32 object-cover mx-auto" />
 
@@ -134,17 +135,17 @@ function AdminProject() {
                     <Form.Item name="title" label="Title">
                         <Input placeholder="Title" />
                     </Form.Item>
-                    <Form.Item name="technologies" label="Technologies">
-                        <Input placeholder="Technologies" />
+                    <Form.Item name="Organization" label="Organization" >
+                        <Input placeholder="Organization" />
                     </Form.Item>
-                    <Form.Item name="link" label="Link">
-                        <Input placeholder="Link" />
+                    <Form.Item name="period" label="Period" >
+                        <Input placeholder="Period" />
                     </Form.Item>
-                    <Form.Item name="description" label="Description">
+                    <Form.Item name="description" label="Description" >
                         <Input.TextArea
-                            className="w-full rounded-md border border-gray-300 focus:outline-none focus:border-2 focus:border-gray-800"
+                            className="w-full  rounded-md pl-5 border border-gray-300 focus:outline-none focus:border-2 focus:border-gray-800"
                             placeholder="Description"
-                            rows={4}
+                            rows={5}
                         />
                     </Form.Item>
                     <Form.Item label="Image">
@@ -174,4 +175,4 @@ function AdminProject() {
     );
 }
 
-export default AdminProject;
+export default AdminCertification;
