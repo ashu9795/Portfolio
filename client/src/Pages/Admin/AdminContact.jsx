@@ -12,7 +12,7 @@ const AdminContact = () => {
     if (confirmSave) {
       try {
         // Use POST instead of GET
-        const response = await axios.patch("http://localhost:8000/api/v1/contact/update_contact", values);
+        const response = await axios.patch(`${import.meta.env.VITE_APP_SERVER}api/v1/contact/update_contact`, values);
         
         alert("Contact updated successfully");
 

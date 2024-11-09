@@ -22,10 +22,10 @@ function AdminExperience() {
 
         try {
             if (!selectedItemForEdit) {
-                response = await axios.post("http://localhost:8000/api/v1/experience/add_experience", values);
+                response = await axios.post(`${import.meta.env.VITE_APP_SERVER}api/v1/experience/add_experience`, values);
                 alert("Experience added successfully");
             } else {
-                response = await axios.put(`http://localhost:8000/api/v1/experience/update_experience/${selectedItemForEdit._id}`, values);
+                response = await axios.put(`${import.meta.env.VITE_APP_SERVER}api/v1/experience/update_experience/${selectedItemForEdit._id}`, values);
                 alert("Experience updated successfully");
             }
             setShowAddEditModal(false);
@@ -56,7 +56,7 @@ function AdminExperience() {
         if(confirmDelete){
 
         try {
-            const response = await axios.delete(`http://localhost:8000/api/v1/experience/del_experience/${id}`)
+            const response = await axios.delete(`${import.meta.env.VITE_APP_SERVER}api/v1/experience/del_experience/${id}`)
             alert("Experience deleted successfully")
             dispatch(SetReloadData(true))
         } catch (error) {

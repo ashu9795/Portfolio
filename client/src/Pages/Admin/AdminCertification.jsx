@@ -24,12 +24,12 @@ function AdminCertification() {
             }
 
             if (!selectedItemForEdit) {
-                await axios.post("http://localhost:8000/api/v1/certification/add_certification", formData, {
+                await axios.post(`${import.meta.env.VITE_APP_SERVER}api/v1/certification/add_certification`, formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
                 alert("Project added successfully");
             } else {
-                await axios.put(`http://localhost:8000/api/v1/certification/update_certification/${selectedItemForEdit._id}`, formData, {
+                await axios.put(`${import.meta.env.VITE_APP_SERVER}api/v1/certification/update_certification/${selectedItemForEdit._id}`, formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
                 alert("Project updated successfully");
@@ -60,7 +60,7 @@ function AdminCertification() {
         const confirmDelete = window.confirm("Do you want to delete this project?");
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:8000/api/v1/certification/del_certification/${id}`);
+                await axios.delete(`${import.meta.env.VITE_APP_SERVER}api/v1/certification/del_certification/${id}`);
                 alert("Certification deleted successfully");
                 dispatch(SetReloadData(true));
             } catch (error) {

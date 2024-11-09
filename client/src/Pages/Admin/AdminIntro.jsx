@@ -12,7 +12,7 @@ const AdminIntro = () => {
     if (confirmSave) {
       try {
         // Use POST instead of GET
-        const response = await axios.post("http://localhost:8000/api/v1/home/update_data", values);
+        const response = await axios.post(`${import.meta.env.VITE_APP_SERVER}api/v1/home/update_data`, values);
         
         alert("Data updated successfully");
 

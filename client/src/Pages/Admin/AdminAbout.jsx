@@ -10,7 +10,7 @@ function AdminAbout() {
     const confirmSave = window.confirm("Do you want to save changes?");
     if(confirmSave){
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/about/update_about", values);
+      const response = await axios.post(`${import.meta.env.VITE_APP_SERVER}api/v1/about/update_about`, values);
       alert("About updated successfully");
     } catch (error) {
       console.error("Error updating data:", error);

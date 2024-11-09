@@ -22,7 +22,7 @@ function App() {
 
   const getPortfolioData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/v1/main/data");  // Fixed typo
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER}api/v1/main/data`);  // Fixed typo
    
       dispatch(SetPortfolioData(response.data.message));
       dispatch(SetReloadData(false));

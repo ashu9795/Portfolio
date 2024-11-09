@@ -24,12 +24,12 @@ function AdminProject() {
             }
 
             if (!selectedItemForEdit) {
-                await axios.post("http://localhost:8000/api/v1/project/add_project", formData, {
+                await axios.post(`${import.meta.env.VITE_APP_SERVER}api/v1/project/add_project`, formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
                 alert("Project added successfully");
             } else {
-                await axios.put(`http://localhost:8000/api/v1/project/update_project/${selectedItemForEdit._id}`, formData, {
+                await axios.put(`${import.meta.env.VITE_APP_SERVER}api/v1/project/update_project/${selectedItemForEdit._id}`, formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
                 alert("Project updated successfully");
@@ -60,7 +60,7 @@ function AdminProject() {
         const confirmDelete = window.confirm("Do you want to delete this project?");
         if (confirmDelete) {
             try {
-                await axios.delete(`http://localhost:8000/api/v1/project/del_project/${id}`);
+                await axios.delete(`${import.meta.env.VITE_APP_SERVER}api/v1/project/del_project/${id}`);
                 alert("Project deleted successfully");
                 dispatch(SetReloadData(true));
             } catch (error) {
