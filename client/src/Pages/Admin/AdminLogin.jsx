@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
+import HeaderAdmin from '../../Components/HeaderAdmin.jsx';
 function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,13 +31,16 @@ function AdminLogin() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Login</h2>
+    <>
+     <HeaderAdmin />
+    <div  className="flex items-center justify-center min-h-screen bg-gray-950 p-4 sm:p-6 lg:p-8">
+     
+      <div  className="bg-gray-500 shadow-md rounded-lg p-6 sm:p-8 lg:p-10 max-w-xs sm:max-w-md w-full">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-center text-red-800 mb-4 sm:mb-6"> Admin-Login</h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+            <label className="block text-black text-sm font-bold mb-2" htmlFor="username">
               Username
             </label>
             <input
@@ -50,7 +53,7 @@ function AdminLogin() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label className="block text-black text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
             <input
@@ -71,6 +74,7 @@ function AdminLogin() {
         </form>
       </div>
     </div>
+    </>
   );
 }
 
