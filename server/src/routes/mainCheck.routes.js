@@ -6,7 +6,7 @@ const router = Router();
 // import {findExperience} from "../controllers/experiences.controller.js"
 // import {findCertification} from "../controllers/certification.controller.js"
 // import {findContact} from "../controllers/contact.controller.js"
-// import { findAbout } from "../controllers/about.controller";
+// import { findAbout } from "../controllers/about.controller"
 import  {fetchData } from "../controllers/main.controller.js";
 
 
