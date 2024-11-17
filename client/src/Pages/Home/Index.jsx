@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../../Components/Header';
 import Intro from '../Home/intro.jsx';
-import "../../font.css";
+import "../../assets/font.css";
 import { runMatter } from '../../../matter.js'; // Import the Matter.js setup function
 import Experiences from './Experiences.jsx';
 import Project from './Project.jsx';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SectionTitle from '../../Components/SectionTitle';
 import { useSelector } from 'react-redux';
-import "../../font.css";
+import "../../assets/font.css";
 import useTheme from '../../context/theme'; // Import the useTheme hook
 
 function Certification() {
