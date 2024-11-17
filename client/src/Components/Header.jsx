@@ -1,12 +1,18 @@
 import React from 'react';
 import ThemeBtn from './ThemeButton';
+import { useNavigate } from "react-router-dom";
+import AdminLogin from '../Pages/Admin/AdminLogin.jsx';
 function Header() {
   const openCallLog = () => {
     const phoneNumber = '+919795727437'; // Replace with your actual phone number
     const callLogUrl = `tel:${phoneNumber}`;
     window.location.href = callLogUrl;
   };
+  const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate("/Login");
+  };
 
   const openWhatsApp = () => {
     const phoneNumber = '+919795727437'; // Replace with your WhatsApp number (in international format)
@@ -17,9 +23,21 @@ function Header() {
 
   return (
     <header className="flex items-center justify-between z-10 w-full px-4 pointer-events-none mt-4 max-w-screen-xl mx-auto">
-      <svg width="70" height="70" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M314.516 203.174L314.516 349.104L162.117 208.727M314.516 203.174L282.653 203.26M314.516 203.174L337.498 203.26L380.617 170.782L314.516 170.782M162.117 208.727L117.661 170.634L157.117 170.782M162.117 208.727L65.1165 301.139L20.176 301.139L137.099 188.83M200.117 170.782L282.653 96.1739L282.653 170.782M200.117 170.782L282.653 170.782M200.117 170.782L157.117 170.782M282.653 203.26L210.462 202.796L282.653 270.76L282.653 203.26ZM282.653 170.782L314.516 170.782M157.117 170.782L315.751 20.1061L314.516 170.782" stroke="currentColor" strokeWidth="10" />
-      </svg>
+       <svg
+      width="70"
+      height="70"
+      viewBox="0 0 406 368"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onClick={handleClick}
+      className='pointer-events-auto'
+    >
+      <path
+        d="M314.516 203.174L314.516 349.104L162.117 208.727M314.516 203.174L282.653 203.26M314.516 203.174L337.498 203.26L380.617 170.782L314.516 170.782M162.117 208.727L117.661 170.634L157.117 170.782M162.117 208.727L65.1165 301.139L20.176 301.139L137.099 188.83M200.117 170.782L282.653 96.1739L282.653 170.782M200.117 170.782L282.653 170.782M200.117 170.782L157.117 170.782M282.653 203.26L210.462 202.796L282.653 270.76L282.653 203.26ZM282.653 170.782L314.516 170.782M157.117 170.782L315.751 20.1061L314.516 170.782"
+        stroke="currentColor"
+        strokeWidth="10"
+      />
+    </svg>
       <div className="flex gap-4 items-center">
        
       <ThemeBtn className="inline-flex items-center justify-center h-6 w-6" />
