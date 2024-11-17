@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://portfolio-5eri.onrender.com/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), // Optional: Removes '/api' prefix when forwarding requests.
       }
