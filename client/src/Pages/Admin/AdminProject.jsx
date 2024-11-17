@@ -24,7 +24,7 @@ function AdminProject() {
             }
 
             if (!selectedItemForEdit) {
-                await axios.post(`${import.meta.env.VITE_APP_SERVER}api/v1/project/add_project`, formData, {
+                await axios.post("http://localhost:8000/api/v1/project/add_project", formData, {
                     headers: { "Content-Type": "multipart/form-data" }
                 });
                 alert("Project added successfully");
