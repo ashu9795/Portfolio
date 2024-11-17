@@ -27,7 +27,7 @@ const uploadCloudinary = async (localFilePath) => {
         }
 
         // Unlink the file after a successful upload
-        fs.unlinkSync(localFilePath);
+      
         return result;
 
     } catch (error) {
@@ -42,6 +42,7 @@ const uploadCloudinary = async (localFilePath) => {
 const deleteCloudinaryImage = async (publicId) => {
     try {
         const result = await cloudinary.uploader.destroy(publicId);
+        fs.unlinkSync(localFilePath);
         return result;
     } catch (error) {
         console.error("Unable to delete image from Cloudinary:", error);
