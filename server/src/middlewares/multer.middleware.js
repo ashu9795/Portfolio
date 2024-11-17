@@ -1,20 +1,21 @@
 import multer from 'multer';
 
-import fs from 'fs/promises';
+// Configure multer to use memory storage
+const storage = multer.memoryStorage();
 
-const storage = multer.diskStorage({
-    destination: async function (req, file, cb) {
-        const tempDir = "./Public/temp";
-        try {
-            await fs.access(tempDir).catch(() => fs.mkdir(tempDir, { recursive: true }));
-            cb(null, tempDir);
-        } catch (err) {
-            cb(new Error("Failed to create temp directory"));
-        }
+// Create the upload middleware
+export const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 10 * 1024 * 1024, // Limit file size to 10MB (optional)
     },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
+    fileFilter: (req, file, cb) => {
+        // Optional: Validate file types (e.g., only images)
+        const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (allowedMimeTypes.includes(file.mimetype)) {
+            cb(null, true); // Accept file
+        } else {
+            cb(new Error('Invalid file type. Only JPEG, PNG, and GIF are allowed.'), false); // Reject file
+        }
     }
 });
-
-export const upload = multer({ storage: storage });

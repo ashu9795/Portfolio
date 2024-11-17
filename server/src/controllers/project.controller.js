@@ -6,43 +6,25 @@ import {Project} from "../project.modals/project.modal.js"
 import { uploadCloudinary, deleteCloudinaryImage } from "../utils/cloudinary.js"
 
 const addNewProject = asyncHandeler(async (req, res) => {
-    // Destructure the fields from the request body
     const { link, description, title, technologies } = req.body;
 
     // Validate required fields
-    if (!link) {
-        throw new ApiError(400, "Link is required");
-    }
-    if (!description) {
-        throw new ApiError(400, "Description is required");
-    }
-    if (!title) {
-        throw new ApiError(400, "Title is required");
-    }
-    
-    // Check if technologies is provided and split it into an array
-    if (!technologies) {
-        throw new ApiError(400, "Technologies is required");
-    }
-    
-    // Split the technologies string by commas and trim spaces
-    const technologiesArray = technologies.split(',').map(tech => tech.trim());
+    if (!link) throw new ApiError(400, "Link is required");
+    if (!description) throw new ApiError(400, "Description is required");
+    if (!title) throw new ApiError(400, "Title is required");
+    if (!technologies) throw new ApiError(400, "Technologies is required");
 
-    // Validate that the technologies array is not empty
+    // Convert technologies to an array
+    const technologiesArray = technologies.split(',').map(tech => tech.trim());
     if (!Array.isArray(technologiesArray) || technologiesArray.length === 0) {
         throw new ApiError(400, "Technologies should be a non-empty array");
     }
 
-    // Check if the image was uploaded
-    const imageLocalPath = req.file?.path || req.body.image; // Image might come in the form of a base64 string or file path
+    // Check if the image is provided
+    if (!req.file?.buffer) throw new ApiError(400, "Image is required");
 
-    if (!imageLocalPath) {
-        throw new ApiError(400, "Image is required");
-    }
-
-    // Upload image to Cloudinary
-    const image = await uploadCloudinary(imageLocalPath);
-
+    // Upload the image to Cloudinary
+    const image = await uploadCloudinary(req.file.buffer);
     if (!image || !image.url) {
         throw new ApiError(500, "Failed to upload image to Cloudinary");
     }
@@ -54,19 +36,15 @@ const addNewProject = asyncHandeler(async (req, res) => {
         link,
         description,
         title,
-        technologies: technologiesArray // Set the technologies array
+        technologies: technologiesArray,
     });
 
     // Save the project to the database
-    if (!project) {
-        throw new ApiError(500, "Project not created");
-    }
-
     await project.save();
 
-    // Send the response
     res.status(201).json(new ApiResponce(201, project, "Project created"));
 });
+
 
 
    
@@ -102,43 +80,43 @@ const updateProject = asyncHandeler(async (req, res) => {
 
     if (!id) throw new ApiError(400, "Project id is required");
 
-
-
     const project = await Project.findById(id);
     if (!project) throw new ApiError(404, "Project not found");
 
+    // Update fields if provided
     if (link) project.link = link;
     if (description) project.description = description;
     if (title) project.title = title;
-    if(req.file?.path||req.file?.image[0]?.path)
-    {
+
+    // Handle image update
+    if (req.file?.buffer) {
+        // Delete the old image from Cloudinary
         const imageUrl = project.image;
-    const publicIdMatch = imageUrl.match(/\/([^/]+)\.[^/.]+$/); // Extracts 'public_id' before file extension BY chnagtpt
-    const publicId = publicIdMatch ? publicIdMatch[1] : null;
+        const publicIdMatch = imageUrl.match(/\/([^/]+)\.[^/.]+$/); // Extract public_id
+        const publicId = publicIdMatch ? publicIdMatch[1] : null;
 
-    if (publicId) {
-        await deleteCloudinaryImage(publicId);
+        if (publicId) {
+            await deleteCloudinaryImage(publicId);
+        }
+
+        // Upload the new image to Cloudinary
+        const image = await uploadCloudinary(req.file.buffer);
+        if (image && image.url) {
+            project.image = image.url; // Update project with the new image URL
+            project.imagePublicId = image.public_id;
+        }
     }
 
-
- const imageLocalPath = req.file?.path||req.file?.image[0]?.path
-
-      const image = await uploadCloudinary(imageLocalPath)
-      if (image && image.url) {
-        project.image = image.url; // Update the project with the new image URL
+    if (technologies) {
+        project.technologies = technologies.split(',').map(tech => tech.trim());
     }
 
-      
-         
-    }
-    if (technologies) project.technologies = technologies;
-
+    // Save the updated project
     await project.save();
 
     res.status(200).json(new ApiResponce(200, project, "Project updated"));
+});
 
-
-})
 
 
 
