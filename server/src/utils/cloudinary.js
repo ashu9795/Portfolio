@@ -1,7 +1,8 @@
 import { v2 as cloudinary } from 'cloudinary';
+import fs from 'fs';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: './.env' });
+dotenv.config({      path: './.env'});
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -9,41 +10,39 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const uploadCloudinary = async (fileBuffer) => {
+
+const uploadCloudinary = async (localFilePath) => {
     try {
-        if (!fileBuffer) {
-            console.log("No file buffer to upload.");
+        if (!localFilePath) {
+            console.log("No file to upload - localFilePath is missing.");
             return null;
         }
 
-        // Convert the buffer to a readable stream
-        const stream = cloudinary.uploader.upload_stream(
-            { resource_type: "auto" },
-            (error, result) => {
-                if (error) {
-                    console.error("Error uploading to Cloudinary:", error);
-                    return null;
-                }
-                return result;
-            }
-        );
+        // Attempt to upload to Cloudinary
+        const result = await cloudinary.uploader.upload(localFilePath, { resource_type: "auto" });
+        
+        if (!result) {
+            console.log("Cloudinary did not return a result.");
+            return null;
+        }
 
-        // Write the buffer to the Cloudinary upload stream
-        stream.end(fileBuffer);
+        // Unlink the file after a successful upload
+      
+        return result;
 
-        return new Promise((resolve, reject) => {
-            stream.on("finish", (result) => resolve(result));
-            stream.on("error", (error) => reject(error));
-        });
     } catch (error) {
         console.error("Unable to upload to Cloudinary:", error);
         return null;
     }
 };
 
+
+
+
 const deleteCloudinaryImage = async (publicId) => {
     try {
         const result = await cloudinary.uploader.destroy(publicId);
+        fs.unlinkSync(localFilePath);
         return result;
     } catch (error) {
         console.error("Unable to delete image from Cloudinary:", error);
